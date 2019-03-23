@@ -171,6 +171,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EncryptExpress";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

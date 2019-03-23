@@ -16,5 +16,11 @@ namespace EncryptExpress
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            // Exit the application
+            Application.Exit();
+        }
     }
 }

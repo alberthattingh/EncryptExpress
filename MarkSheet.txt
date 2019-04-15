@@ -1,0 +1,22 @@
+MERKSKEMA VIR DIE PROJEK
+
+PROJEK
+    Encrypt photo                                   5
+    Encrypt textfile                                5
+    Encrypt rar file                                5
+    Choose your own password                        10
+    Intuitive UI                                    5
+
+BONUS
+    Use a hash as a password                        10
+    Use self-create encryption algorithm            10
+    Removes unencrypted files after encryption      5
+
+DOCUMENTATION
+    Spelling                                        10
+    Content                                         15
+    Pages                                           5
+    Compares own algorithm with others              10
+    References                                      5
+
+TOTAL                                               100

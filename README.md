@@ -1,5 +1,5 @@
 # EncryptExpress
-Project for encrypting and decrypting simple text-strings and files.
+Project for encrypting and decrypting any files using AES.
 
 ## Installation
 Not intended for public use.

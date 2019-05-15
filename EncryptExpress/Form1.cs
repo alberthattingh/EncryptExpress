@@ -4,14 +4,20 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EncryptExpress
 {
     public partial class Form1 : Form
     {
+        private const string defaultPassword = "secret";
+        private byte[] password;
+        private string customPassword = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,87 +29,64 @@ namespace EncryptExpress
             Application.Exit();
         }
 
+        // Method to hash and set a custom password
+        private void setPassword(string pw)
+        {
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(pw));
+                var sb = new StringBuilder(hash.Length * 2);
+
+                foreach (byte b in hash)
+                {
+                    // can be "x2" if you want lowercase
+                    sb.Append(b.ToString("x2"));
+                }
+
+                customPassword = sb.ToString();
+                password = Encoding.ASCII.GetBytes(customPassword);
+            }
+        }
+
+        // Hide all controls
         private void hideAllControls()
         {
-            label1.Visible = false;
-            label2.Visible = false;
+            encryptFile1.Visible = false;
+            decryptFile1.Visible = false;
+            settings1.Visible = false;
 
-            txtInput.Clear();
-            txtOutput.Clear();
-
-            btnTextEncrypt.BackColor = Color.FromArgb(64, 64, 64);
-            btnTextDecrypt.BackColor = Color.FromArgb(64, 64, 64);
             btnFileEncrypt.BackColor = Color.FromArgb(64, 64, 64);
             btnFileDecrypt.BackColor = Color.FromArgb(64, 64, 64);
             btnSettings.BackColor = Color.FromArgb(64, 64, 64);
-
-            txtInput.Visible = false;
-            txtOutput.Visible = false;
-            pictureBox1.Visible = false;
-            btnEncryptString.Visible = false;
-            btnDecryptString.Visible = false;
         }
 
-        private void btnTextEncrypt_Click(object sender, EventArgs e)
+        // Button to open section that allows user to encrypt files
+        private void btnFileEncrypt_Click(object sender, EventArgs e)
         {
             hideAllControls();
-            btnTextEncrypt.BackColor = Color.DimGray;
-
-            txtInput.Visible = true;
-            txtInput.Focus();
-            txtOutput.Visible = true;
-            pictureBox1.Visible = true;
-            btnEncryptString.Visible = true;
-
-            label1.Text = "Enter text to encrypt:";
-            label2.Text = "Encrypted text:";
-            label1.Visible = true;
-            label2.Visible = true;
+            btnFileEncrypt.BackColor = Color.DimGray;
+            encryptFile1.Visible = true;
         }
 
-        private void btnEncryptString_Click(object sender, EventArgs e)
-        {
-            try
-            { 
-                string encrypted = CryptAes.Encrypt(txtInput.Text);
-                txtOutput.Text = encrypted;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An error occured while encrypting the text. Please make sure you typed something in the textbox.");
-                txtOutput.Focus();
-            }
-        }
-
-        private void btnTextDecrypt_Click(object sender, EventArgs e)
+        private void btnFileDecrypt_Click(object sender, EventArgs e)
         {
             hideAllControls();
-            btnTextDecrypt.BackColor = Color.DimGray;
-
-            txtInput.Visible = true;
-            txtInput.Focus();
-            txtOutput.Visible = true;
-            pictureBox1.Visible = true;
-            btnDecryptString.Visible = true;
-
-            label1.Text = "Enter encrypted text to decrypt:";
-            label2.Text = "Decrypted text:";
-            label1.Visible = true;
-            label2.Visible = true;
+            btnFileDecrypt.BackColor = Color.DimGray;
+            decryptFile1.Visible = true;
         }
 
-        private void btnDecryptString_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string decrypted = CryptAes.Decrypt(txtInput.Text);
-                txtOutput.Text = decrypted;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("An error occured while decrypting the text. Please make sure you typed something in the textbox.");
-                txtInput.Focus();
-            }
+            hideAllControls();
+            btnSettings.BackColor = Color.DimGray;
+            settings1.Visible = true;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            password = Encoding.ASCII.GetBytes(defaultPassword);
+        }
+
+    
     }
 }

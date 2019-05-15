@@ -29,20 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.btnFileDecrypt = new System.Windows.Forms.Button();
-            this.btnFileEncrypt = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.settings1 = new EncryptExpress.Settings();
             this.encryptFile1 = new EncryptExpress.EncryptFile();
             this.decryptFile1 = new EncryptExpress.DecryptFile();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnFileDecrypt = new System.Windows.Forms.Button();
+            this.btnFileEncrypt = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnSettings);
             this.panel1.Controls.Add(this.btnFileDecrypt);
             this.panel1.Controls.Add(this.btnFileEncrypt);
@@ -51,6 +54,58 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(166, 504);
             this.panel1.TabIndex = 0;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // settings1
+            // 
+            this.settings1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.settings1.Location = new System.Drawing.Point(166, 59);
+            this.settings1.Name = "settings1";
+            this.settings1.Size = new System.Drawing.Size(627, 445);
+            this.settings1.TabIndex = 8;
+            this.settings1.Visible = false;
+            // 
+            // encryptFile1
+            // 
+            this.encryptFile1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.encryptFile1.Location = new System.Drawing.Point(166, 59);
+            this.encryptFile1.Name = "encryptFile1";
+            this.encryptFile1.Size = new System.Drawing.Size(627, 445);
+            this.encryptFile1.TabIndex = 10;
+            // 
+            // decryptFile1
+            // 
+            this.decryptFile1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.decryptFile1.Location = new System.Drawing.Point(166, 59);
+            this.decryptFile1.Name = "decryptFile1";
+            this.decryptFile1.Size = new System.Drawing.Size(627, 445);
+            this.decryptFile1.TabIndex = 9;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Image = global::EncryptExpress.Properties.Resources.quit;
+            this.btnExit.Location = new System.Drawing.Point(736, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(57, 53);
+            this.btnExit.TabIndex = 8;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EncryptExpress.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(166, 115);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // btnSettings
             // 
@@ -103,48 +158,6 @@
             this.btnFileEncrypt.UseVisualStyleBackColor = false;
             this.btnFileEncrypt.Click += new System.EventHandler(this.btnFileEncrypt_Click);
             // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Image = global::EncryptExpress.Properties.Resources.quit;
-            this.btnExit.Location = new System.Drawing.Point(736, 0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(57, 53);
-            this.btnExit.TabIndex = 8;
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // settings1
-            // 
-            this.settings1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.settings1.Location = new System.Drawing.Point(166, 59);
-            this.settings1.Name = "settings1";
-            this.settings1.Size = new System.Drawing.Size(627, 445);
-            this.settings1.TabIndex = 8;
-            this.settings1.Visible = false;
-            // 
-            // encryptFile1
-            // 
-            this.encryptFile1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.encryptFile1.Location = new System.Drawing.Point(166, 59);
-            this.encryptFile1.Name = "encryptFile1";
-            this.encryptFile1.Size = new System.Drawing.Size(627, 445);
-            this.encryptFile1.TabIndex = 10;
-            // 
-            // decryptFile1
-            // 
-            this.decryptFile1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.decryptFile1.Location = new System.Drawing.Point(166, 59);
-            this.decryptFile1.Name = "decryptFile1";
-            this.decryptFile1.Size = new System.Drawing.Size(627, 445);
-            this.decryptFile1.TabIndex = 9;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +175,7 @@
             this.Text = "EncryptExpress";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +191,7 @@
         private DecryptFile decryptFile1;
         private EncryptFile encryptFile1;
         private Settings settings1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
